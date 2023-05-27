@@ -9,6 +9,9 @@
 !vids
 !down
 
+# system init script
+!.init.sh
+
 # configs
 !.gitconfig
 !.bashrc
