@@ -1,8 +1,15 @@
 # use as whitelist
 *
 !*/
-
 !.gitignore
+
+# symlinks
+!docs
+!pics
+!vids
+!down
+
+# configs
 !.gitconfig
 !.bashrc
 !.config/**
