@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Enable autologin
+groupadd -r autologin
+gpasswd -a $USER autologin
+sed -i "s/#autologin-user=/autologin-user=$USER/" /etc/lightdm/lightdm.conf
+sed -i "s/#autologin-session=/autologin-session=i3" /etc/lightdm/lightdm.conf
+
 # Enable touchpad tapping
 
 sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
@@ -20,4 +26,5 @@ dnf install -y \
 	neovim \
 	rofi \
 	alacritty \
+	arandr \
 
