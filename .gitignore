@@ -3,6 +3,9 @@
 !*/
 !.gitignore
 
+.local/
+.local/**
+
 # symlinks
 !docs
 !pics

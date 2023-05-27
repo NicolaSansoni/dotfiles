@@ -31,6 +31,10 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
 # mouse accel
 exec --no-startup-id xset m 0
 # bell 
@@ -38,9 +42,8 @@ exec --no-startup-id xset b 0
 # sleep timer
 exec --no-startup-id xset s 0
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+focus_follows_mouse no
+mouse_warping none
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -132,6 +135,21 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# assign workspace to monitor
+set $dp DP-1-2-3
+set $hdmi HDMI-1-2-3
+
+workspace $ws1 output $dp $hdmi
+workspace $ws2 output $dp $hdmi
+workspace $ws3 output $dp $hdmi
+workspace $ws4 output $dp $hdmi
+workspace $ws5 output $dp $hdmi
+workspace $ws6 output $dp $hdmi
+workspace $ws7 output $dp $hdmi
+workspace $ws8 output $dp $hdmi
+workspace $ws9 output $dp $hdmi
+workspace $ws10 output $dp $hdmi
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

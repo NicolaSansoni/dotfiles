@@ -22,6 +22,8 @@ EOF
 
 dnf update -y
 
+dnf group install -y "C Development Tools and Libraries" "Development Tools"
+
 dnf install -y \
 	neovim \
 	rofi \
@@ -29,4 +31,5 @@ dnf install -y \
 	arandr \
 	xset \
 	xinput \
+	ripgrep \
 
