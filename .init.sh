@@ -27,4 +27,6 @@ dnf install -y \
 	rofi \
 	alacritty \
 	arandr \
+	xset \
+	xinput \
 
