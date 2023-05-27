@@ -1,0 +1,9 @@
+# use as whitelist
+*
+!*/
+
+!.gitignore
+!.gitconfig
+!.bashrc
+!.config/**
+

@@ -1,0 +1,6 @@
+# use as whitelist
+
+*
+!*/
+!.gitignore
+
