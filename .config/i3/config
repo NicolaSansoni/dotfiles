@@ -238,3 +238,5 @@ bar {
   }
 }
 
+exec --no-startup-id ~/.fehbg
+
