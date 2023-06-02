@@ -9,6 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+exec ~/.xrandrinit
+
 set $mod Mod4
 
 set $left h
