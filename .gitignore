@@ -1,7 +1,9 @@
 # use as whitelist
 *
+.*
 !*/
 !.gitignore
+!.gitconfig
 
 .local/
 .local/**
