@@ -5,5 +5,5 @@
 	email = nsansoni97@gmail.com
 
 [filter "gitignore"]
-	clean = "sed '/#gitignore$/d'"
+	clean = "sed '/^#gitignore$/{N;d}'; sed '/#gitignore$/d';"
 	smudge = cat
