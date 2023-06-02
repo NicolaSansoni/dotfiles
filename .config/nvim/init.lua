@@ -268,6 +268,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- File explorer
+vim.keymap.set('n', '<leader>fe', ":Explore<CR>" , { desc = '[e] Open file explorer (netrw)' })
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {

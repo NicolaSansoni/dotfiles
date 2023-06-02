@@ -25,3 +25,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
+
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"

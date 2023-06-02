@@ -1,10 +1,10 @@
 # use as whitelist
 *
-!*/
 !.gitignore
 
 .local/
 .local/**
+
 
 # symlinks
 !docs
@@ -18,5 +18,6 @@
 # configs
 !.gitconfig
 !.bashrc
+!.config
 !.config/**
 
