@@ -4,3 +4,6 @@
 	name = nsanso
 	email = nsansoni97@gmail.com
 
+[filter "gitignore"]
+	clean = "sed '/^#gitignore$/{N;d}'; sed '/#gitignore$/d';"
+	smudge = cat
