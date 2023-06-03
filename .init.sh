@@ -5,8 +5,8 @@ LOGNAME=$(logname)
 # Enable autologin
 groupadd -r autologin
 gpasswd -a $LOGNAME autologin
-sed -i "s/#autologin-user=/autologin-user=$LOGNAME/" /etc/lightdm/lightdm.conf
-sed -i "s/#autologin-session=/autologin-session=i3/" /etc/lightdm/lightdm.conf
+sed -i "s/#autologin-user=/autologin-user=\"$LOGNAME\"/" /etc/lightdm/lightdm.conf
+sed -i "s/#autologin-session=/autologin-session=\"i3\"/" /etc/lightdm/lightdm.conf
 
 # Enable touchpad tapping
 
