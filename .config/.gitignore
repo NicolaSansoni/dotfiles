@@ -1,10 +1,20 @@
 # use as whitelist
 
 *
-!*/
 !.gitignore
 
+!i3
 !i3/**
+
+!nvim
 !nvim/**
+
+!tostapane
 !tostapane/**
+
+!alacritty
 !alacritty/**
+
+!picom
+!picom/**
+

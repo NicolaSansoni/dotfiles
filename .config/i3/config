@@ -9,7 +9,16 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec ~/.xrandrinit
+# xrandr config
+exec --no-startup-id ~/.xrandrinit
+# mouse accel
+exec --no-startup-id xset m 0
+# bell 
+exec --no-startup-id xset b 0
+# sleep timer
+exec --no-startup-id xset s 0
+# compositor
+exec --no-startup-id picom -b
 
 set $mod Mod4
 
@@ -36,13 +45,6 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# mouse accel
-exec --no-startup-id xset m 0
-# bell 
-exec --no-startup-id xset b 0
-# sleep timer
-exec --no-startup-id xset s 0
 
 focus_follows_mouse no
 mouse_warping none
@@ -211,7 +213,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-default_border pixel
+default_border none
 gaps inner 8
 
 # class                 border  bground text    indicator child_border
