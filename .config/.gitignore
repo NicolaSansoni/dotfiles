@@ -21,3 +21,6 @@
 !polybar
 !polybar/**
 
+!rofi
+!rofi/**
+

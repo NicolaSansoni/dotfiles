@@ -138,22 +138,22 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws0 "0"
 
 # assign workspace to monitor
-set $dp DP-1-2-3
-set $hdmi HDMI-1-2-3
+set $dp DP-2
+set $hdmi HDMI-0
 
 workspace $ws1 output $dp $hdmi
 workspace $ws2 output $dp $hdmi
 workspace $ws3 output $dp $hdmi
 workspace $ws4 output $dp $hdmi
 workspace $ws5 output $dp $hdmi
-workspace $ws6 output $dp $hdmi
-workspace $ws7 output $dp $hdmi
-workspace $ws8 output $dp $hdmi
-workspace $ws9 output $dp $hdmi
-workspace $ws10 output $dp $hdmi
+workspace $ws6 output $hdmi
+workspace $ws7 output $hdmi
+workspace $ws8 output $hdmi
+workspace $ws9 output $hdmi
+workspace $ws0 output $hdmi
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -165,7 +165,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+0 workspace number $ws0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1, workspace number $ws1
@@ -177,14 +177,14 @@ bindsym $mod+Shift+6 move container to workspace number $ws6, workspace number $
 bindsym $mod+Shift+7 move container to workspace number $ws7, workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8, workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9, workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10, workspace number $ws10
+bindsym $mod+Shift+0 move container to workspace number $ws0, workspace number $ws0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -224,23 +224,6 @@ client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#   status_command i3status
-#   colors {
-#     background #000000
-#     statusline #FFFFFF
-#     separator  #666666
-# 
-#     focused_workspace  #83CAFA #51A2DA #FFFFFF
-#     active_workspace   #3C6EB4 #294172 #FFFFFF
-#     inactive_workspace #8C8C8C #4C4C4C #888888
-#     urgent_workspace   #EC69A0 #DB3279 #FFFFFF
-#     binding_mode       #b691d3 #A07CBC #FFFFFF
-#   }
-# }
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.fehbg
