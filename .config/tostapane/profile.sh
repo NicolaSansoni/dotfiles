@@ -5,3 +5,6 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 # export ELM_SCALE=${SCALE_FACTOR}
 # export WINIT_X11_SCALE_FACTOR=${SCALE_FACTOR}
 
+export GTK_THEME=Adwaita:dark
+export QT_STYLE_OVERRIDE=adwaita-dark
+
