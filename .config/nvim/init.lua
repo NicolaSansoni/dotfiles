@@ -18,5 +18,6 @@ require('lazy').setup({
   require('custom.treesitter'),
   require('custom.telescope'),
   require('custom.debug'),
+  require('custom.null-ls'),
   require('custom.misc'),
 })
