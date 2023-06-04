@@ -17,6 +17,7 @@ require('lazy').setup({
   require('plugins.lsp'),
   require('plugins.treesitter'),
   require('plugins.telescope'),
+  require('plugins.debug'),
   require('plugins.misc'),
 })
 
@@ -24,3 +25,4 @@ require('setup.lsp')
 require('setup.treesitter')
 require('setup.telescope')
 require('setup.misc')
+require('setup.debug')
