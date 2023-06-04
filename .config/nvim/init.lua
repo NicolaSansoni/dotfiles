@@ -1,4 +1,4 @@
-require('setup.vim')
+require('custom.vim')
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -7,22 +7,16 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',
     lazypath,
   }
 end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require('plugins.lsp'),
-  require('plugins.treesitter'),
-  require('plugins.telescope'),
-  require('plugins.debug'),
-  require('plugins.misc'),
+  require('custom.lsp'),
+  require('custom.treesitter'),
+  require('custom.telescope'),
+  require('custom.debug'),
+  require('custom.misc'),
 })
-
-require('setup.lsp')
-require('setup.treesitter')
-require('setup.telescope')
-require('setup.misc')
-require('setup.debug')
