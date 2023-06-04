@@ -132,17 +132,15 @@ require('lazy').setup({
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
+    lazy = false,
     priority = 1000,
     opts = {
       transparent = true
     },
-  },
-
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "onedark",
-    },
+    config = function(_, opts)
+      require("onedark").setup(opts)
+      vim.cmd.colorscheme 'onedark'
+    end,
   },
 
   {
