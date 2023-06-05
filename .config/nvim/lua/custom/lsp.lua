@@ -4,7 +4,7 @@ local servers = {
   docker_compose_language_service = {},
   dockerls = {},
   dotls = {},
-  emmetls = {},
+  emmet_ls = {},
   eslint = {},
   gopls = {},
   graphql = {},
@@ -27,7 +27,16 @@ local servers = {
   taplo = {},
   terraformls = {},
   tsserver = {},
-  volar = {},
+  volar = {
+    filetypes = {
+      'typescript',
+      'javascript',
+      'typescriptreact',
+      'javascriptreact',
+      'vue',
+      'json',
+    },
+  },
   yamlls = {},
   zls = {},
 }
