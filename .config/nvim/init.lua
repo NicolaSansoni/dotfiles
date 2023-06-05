@@ -1,4 +1,4 @@
-require('custom.vim')
+require 'custom.vim'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -13,11 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-  require('custom.lsp'),
-  require('custom.treesitter'),
-  require('custom.telescope'),
-  require('custom.debug'),
-  require('custom.null-ls'),
-  require('custom.misc'),
-})
+require('lazy').setup {
+  require 'custom.neotree',
+  require 'custom.lsp',
+  require 'custom.treesitter',
+  require 'custom.telescope',
+  require 'custom.debug',
+  require 'custom.null-ls',
+  require 'custom.misc',
+}
