@@ -1,3 +1,37 @@
+local servers = {
+  clangd = {},
+  cssls = {},
+  docker_compose_language_service = {},
+  dockerls = {},
+  dotls = {},
+  emmetls = {},
+  eslint = {},
+  gopls = {},
+  graphql = {},
+  html = {},
+  jsonls = {},
+  lemminx = {},
+  lua_ls = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
+  marksman = {},
+  pyright = {},
+  rust_analyzer = {},
+  spectral = {},
+  sqlls = {},
+  svelte = {},
+  tailwindcss = {},
+  taplo = {},
+  terraformls = {},
+  tsserver = {},
+  volar = {},
+  yamlls = {},
+  zls = {},
+}
+
 local function autoformatting()
   local format_is_enabled = true
   vim.api.nvim_create_user_command('KickstartFormatToggle', function()
@@ -80,21 +114,6 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
-local servers = {
-  clangd = {},
-  gopls = {},
-  pyright = {},
-  rust_analyzer = {},
-  tsserver = {},
-  zls = {},
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-}
-
 return {
   {
     -- LSP Configuration & Plugins
@@ -102,7 +121,7 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
       'folke/neodev.nvim',
     },
     config = function()
