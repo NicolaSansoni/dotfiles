@@ -8,7 +8,15 @@ return {
     },
     config = function()
       require('mason-null-ls').setup {
-        ensure_installed = { 'stylua', 'jq', 'black', 'buf', 'clang-format', 'prettier', 'shfmt' },
+        ensure_installed = {
+          'stylua',
+          'jq',
+          'black',
+          -- 'buf',
+          'clang-format',
+          'prettier',
+          'shfmt',
+        },
         automatic_installation = false,
         automatic_setup = true,
         handlers = {},
