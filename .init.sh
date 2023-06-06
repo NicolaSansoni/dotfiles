@@ -10,7 +10,7 @@ sed -i "s/#autologin-session=/autologin-session=\"i3\"/" /etc/lightdm/lightdm.co
 
 # Enable touchpad tapping
 
-sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
+sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
 Section "InputClass"
         Identifier "touchpad"
         MatchIsTouchpad "on"
@@ -43,6 +43,8 @@ dnf install -y \
 	picom \
 	polybar \
 	zstd \
+	maim \
+	xclip
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -53,5 +55,3 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 groupadd docker
 usermod -aG docker $LOGNAME
-
-
