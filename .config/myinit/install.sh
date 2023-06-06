@@ -34,4 +34,4 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-test -f $LOGNAME/.asdf/asdf.sh || git clone https://github.com/asdf-vm/asdf.git /home/$LOGNAME/.asdf
+test -f /home/$LOGNAME/.asdf/asdf.sh || git clone https://github.com/asdf-vm/asdf.git /home/$LOGNAME/.asdf
