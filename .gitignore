@@ -10,7 +10,7 @@
 !down
 
 # system init script
-!.init.sh
+!.tool-versions
 
 # configs
 !.gitconfig
