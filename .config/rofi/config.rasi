@@ -1,6 +1,8 @@
+@theme "theme.rasi"
+
 configuration {
 /*	modes: "window,drun,run,ssh";*/
-	font: "mono 16";
+	font: "mono 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -37,7 +39,7 @@ configuration {
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	filter: ;*/
-	dpi: -1;
+	dpi: 0;
 /*	threads: 0;*/
 /*	scroll-method: 0;*/
 /*	window-format: "{w}    {c}   {t}";*/
