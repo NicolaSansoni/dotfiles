@@ -5,7 +5,7 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'HiPhish/nvim-ts-rainbow2',
     },
-    build = ':tsupdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').setup()
       require('nvim-treesitter.configs').setup {

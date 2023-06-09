@@ -16,6 +16,7 @@ return {
           'clang-format',
           'prettier',
           'shfmt',
+          'gofumpt',
         },
         automatic_installation = false,
         automatic_setup = true,

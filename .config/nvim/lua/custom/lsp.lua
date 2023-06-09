@@ -6,7 +6,11 @@ local servers = {
   dotls = {},
   emmet_ls = {},
   eslint = {},
-  gopls = {},
+  gopls = {
+    gopls = {
+      gofumpt = true,
+    },
+  },
   graphql = {},
   html = {},
   jsonls = {},
