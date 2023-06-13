@@ -24,6 +24,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 vim.o.foldmethod = 'indent'
+vim.o.foldlevelstart = 9999
 
 vim.g.gitblame_date_format = '%r'
 
