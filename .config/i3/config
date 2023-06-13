@@ -18,6 +18,8 @@ exec --no-startup-id xset b 0
 # sleep timer
 exec --no-startup-id xset s 0
 exec --no-startup-id xset -dpms
+# keyboard
+exec --no-startup-id setxkbmap us,us\(intl\)
 # compositor
 exec --no-startup-id picom -b
 

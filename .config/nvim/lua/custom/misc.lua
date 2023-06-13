@@ -31,6 +31,8 @@ return {
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
 
+  'f-person/git-blame.nvim',
+
   { 'folke/which-key.nvim',  opts = {} },
   { 'numToStr/Comment.nvim', opts = {} },
 
