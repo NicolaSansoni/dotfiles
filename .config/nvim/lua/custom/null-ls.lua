@@ -12,8 +12,6 @@ return {
           'stylua',
           'jq',
           'black',
-          -- 'buf',
-          'clang-format',
           'prettier',
           'shfmt',
           'gofumpt',
