@@ -8,8 +8,11 @@ usermod -aG autologin $LOGNAME
 groupadd docker
 usermod -aG docker $LOGNAME
 
-sed -i "s/#autologin-user=/autologin-user=$LOGNAME/" /etc/lightdm/lightdm.conf
-sed -i "s/#autologin-session=/autologin-session=i3/" /etc/lightdm/lightdm.conf
+sudo mkdir -p /etc/lightdm/lightdm.conf.d && sudo printf "\
+[Seat:\*]
+autologin-user=${LOGNAME}\n \
+autologin-session=i3\n \
+" >/etc/lightdm/lightdm.conf.d/10-autologin.conf
 
 sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf <<'EOF' 1>/dev/null
 Section "InputClass"

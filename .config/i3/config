@@ -20,8 +20,6 @@ exec --no-startup-id xset s 0
 exec --no-startup-id xset -dpms
 # keyboard
 exec --no-startup-id setxkbmap us,us\(intl\)
-# compositor
-exec --no-startup-id picom -b
 
 set $mod Mod4
 
@@ -234,6 +232,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #000000
 
+exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.fehbg
 
