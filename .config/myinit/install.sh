@@ -26,7 +26,9 @@ dnf install -y \
 	zstd \
 	maim \
 	xclip \
-	tldr
+	tldr \
+	xbacklight \
+	playerctl
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 

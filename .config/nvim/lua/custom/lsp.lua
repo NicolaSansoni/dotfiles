@@ -13,7 +13,14 @@ local servers = {
   },
   graphql = {},
   html = {},
-  jsonls = {},
+  jsonls = function()
+    return {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+        validate = { enable = true },
+      },
+    }
+  end,
   lemminx = {},
   lua_ls = {
     Lua = {
@@ -134,8 +141,9 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
       'folke/neodev.nvim',
+      'b0o/schemastore.nvim',
     },
     config = function()
       autoformatting()
@@ -151,10 +159,15 @@ return {
       }
       mason_lspconfig.setup_handlers {
         function(server_name)
+          local settings = servers[server_name]
+          if type(settings) == 'function' then
+            settings = settings()
+          end
+
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = servers[server_name],
+            settings = settings,
           }
         end,
       }

@@ -22,9 +22,10 @@ return {
         automatic_setup = true,
         handlers = {},
       }
-      require('null-ls').setup {
-        sources = {},
-      }
+
+      -- local formatting = require('null-ls').builtins.formatting
+
+      require('null-ls').setup {}
     end,
   },
 }
