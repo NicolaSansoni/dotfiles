@@ -154,6 +154,12 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+      local lspconfig = require 'lspconfig'
+      lspconfig.glslls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }
+
       local mason_lspconfig = require 'mason-lspconfig'
       mason_lspconfig.setup {
         ensure_installed = vim.tbl_keys(servers),
@@ -165,7 +171,7 @@ return {
             settings = settings()
           end
 
-          require('lspconfig')[server_name].setup {
+          lspconfig[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = settings,
