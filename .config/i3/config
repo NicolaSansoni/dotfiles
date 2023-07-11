@@ -9,8 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# xrandr config
-exec --no-startup-id ~/.xrandrinit
 # mouse accel
 exec --no-startup-id xset m 0
 # bell 
@@ -20,6 +18,8 @@ exec --no-startup-id xset s 0
 exec --no-startup-id xset -dpms
 # keyboard
 exec --no-startup-id setxkbmap us,us\(intl\)
+# xrandr config
+exec --no-startup-id ~/.xrandrinit
 
 set $mod Mod4
 
@@ -47,6 +47,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+focus_on_window_activation focus
 focus_follows_mouse no
 mouse_warping none
 
@@ -226,7 +227,7 @@ default_border pixel 2
 gaps inner 8
 
 # class                 border  bground text    indicator child_border
-client.focused          #F0C674 #51A2DA #FFFFFF #F0C674   #51A2DA
+client.focused          #F0C674 #51A2DA #FFFFFF #F0C674   #F0C674
 # client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
 # client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
 client.focused_inactive #020202 #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
@@ -236,7 +237,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #000000
 
-exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.fehbg
+exec --no-startup-id picom -b
 
