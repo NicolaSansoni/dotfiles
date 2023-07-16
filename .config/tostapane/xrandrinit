@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sleep 1
+sleep 2
 
 xrandr --screen 0 --fb 7680x2160 \
 	--output DP-2 --primary --mode 3840x2160 --rate 144.00 --pos 0x0 --scale 1 \

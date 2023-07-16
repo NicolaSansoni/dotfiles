@@ -8,25 +8,31 @@ local servers = {
   emmet_ls = {},
   eslint = {},
   gopls = {
-    gopls = {
-      gofumpt = true,
+    settings = {
+      gopls = {
+        gofumpt = true,
+      },
     },
   },
   graphql = {},
   html = {},
-  jsonls = function()
-    return {
-      json = {
-        schemas = require('schemastore').json.schemas(),
-        validate = { enable = true },
-      },
-    }
-  end,
+  jsonls = {
+    settings = function()
+      return {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      }
+    end,
+  },
   lemminx = {},
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
     },
   },
   marksman = {},
@@ -38,7 +44,7 @@ local servers = {
   tailwindcss = {},
   taplo = {},
   terraformls = {},
-  tsserver = {},
+  -- tsserver = {},
   volar = {
     filetypes = {
       'typescript',
@@ -142,7 +148,7 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
       'folke/neodev.nvim',
       'b0o/schemastore.nvim',
     },
@@ -166,16 +172,22 @@ return {
       }
       mason_lspconfig.setup_handlers {
         function(server_name)
-          local settings = servers[server_name]
-          if type(settings) == 'function' then
-            settings = settings()
+          local options = { capabilities = capabilities, on_attach = on_attach }
+
+          local user_options = servers[server_name]
+          if user_options == nil then
+            return
           end
 
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = settings,
-          }
+          for k, v in pairs(user_options) do
+            if type(v) == 'function' then
+              options[k] = v()
+            else
+              options[k] = v
+            end
+          end
+
+          lspconfig[server_name].setup(options)
         end,
       }
     end,
