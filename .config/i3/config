@@ -18,8 +18,6 @@ exec --no-startup-id xset s 0
 exec --no-startup-id xset -dpms
 # keyboard
 exec --no-startup-id setxkbmap 'us,us(intl)' -option 'grp:ctrls_toggle'
-# xrandr config
-exec --no-startup-id ~/.xrandrinit
 
 set $mod Mod4
 
