@@ -8,16 +8,17 @@ return {
             'leoluz/nvim-dap-go',
         },
         config = function()
-            local dap = require('dap')
-            local dapui = require('dapui')
+            local dap = require 'dap'
+            local dapui = require 'dapui'
 
-            require('mason-nvim-dap').setup({
+            require('mason-nvim-dap').setup {
                 automatic_setup = true,
                 handlers = {},
                 ensure_installed = {
                     'delve',
+                    'cppdbg',
                 },
-            })
+            }
 
             dapui.setup {
                 icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
@@ -31,7 +32,7 @@ return {
                         step_back = 'b',
                         run_last = '▶▶',
                         terminate = '⏹',
-                        disconnect = "⏏",
+                        disconnect = '⏏',
                     },
                 },
             }
@@ -40,7 +41,7 @@ return {
             dap.listeners.before.event_terminated['dapui_config'] = dapui.close
             dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-            vim.keymap.set("n", "<F7>", dapui.toggle)
+            vim.keymap.set('n', '<F7>', dapui.toggle)
             vim.keymap.set('n', '<F5>', dap.continue)
             vim.keymap.set('n', '<F1>', dap.step_into)
             vim.keymap.set('n', '<F2>', dap.step_over)
@@ -52,5 +53,5 @@ return {
 
             require('dap-go').setup()
         end,
-    }
+    },
 }
