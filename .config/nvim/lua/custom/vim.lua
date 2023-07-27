@@ -17,6 +17,7 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.scrolloff = 10
+vim.o.linebreak = true
 
 vim.o.tabstop = 4
 vim.o.softtabstop = 2
