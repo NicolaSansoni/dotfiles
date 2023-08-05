@@ -37,9 +37,13 @@ return {
           'document_symbols',
         },
         source_selector = {
-          winbar = false,
           statusline = true,
+          sources = {
+            { source = 'filesystem' },
+            { source = 'document_symbols' },
+          },
         },
+        popup_border_style = 'none',
         close_if_last_window = true,
         window = {
           position = 'right',
@@ -72,9 +76,28 @@ return {
           },
           follow_current_file = true,
         },
+        document_symbols = {
+          window = {
+            mappings = {
+              ['<cr>'] = 'toggle_node',
+              ['g'] = 'jump_to_symbol',
+              ['A'] = 'noop', -- also accepts the config.show_path and config.insert_as options.
+              ['d'] = 'noop',
+              ['y'] = 'noop',
+              ['x'] = 'noop',
+              ['p'] = 'noop',
+              ['c'] = 'noop',
+              ['m'] = 'noop',
+              ['a'] = 'noop',
+              ['/'] = 'filter',
+              ['f'] = 'filter_on_submit',
+            },
+          },
+        },
       }
 
-      vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+      vim.keymap.set('n', '\\', ':Neotree focus<CR>', { desc = 'Open File tree' })
+      vim.keymap.set('n', '<leader>\\', ':Neotree focus document_symbols<CR>', { desc = 'Open Symbols tree' })
     end,
   },
 }
