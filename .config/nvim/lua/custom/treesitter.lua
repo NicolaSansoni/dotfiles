@@ -3,10 +3,12 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'HiPhish/rainbow-delimiters.nvim',
     },
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').setup()
+
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'c', 'cpp', 'glsl', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
         ignore_install = {},
@@ -69,6 +71,28 @@ return {
           },
         },
         modules = {},
+      }
+
+      local rainbow_delimiters = require 'rainbow-delimiters'
+      require 'rainbow-delimiters.setup' {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          commonlisp = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          latex = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+        -- blacklist = { 'c', 'cpp' },
       }
     end,
   },
