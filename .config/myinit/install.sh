@@ -44,3 +44,12 @@ sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 test -f /home/$LOGNAME/.asdf/asdf.sh || \ 
 sudo -u $LOGNAME git clone https://github.com/asdf-vm/asdf.git /home/$LOGNAME/.asdf
+
+mkdir caskaydia-font
+cd caskaydia-font
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip
+unzip *.zip
+mv *.ttf /usr/share/fonts/
+fc-cache -f -v
+cd ..
+rm -rf caskaydia-font
