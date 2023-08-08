@@ -28,7 +28,13 @@ dnf install -y \
 	xclip \
 	tldr \
 	light \
-	playerctl
+	playerctl \
+	tk-devel \
+	sqlite-devel \
+	libffi-devel \
+	bzip2-devel \
+	ncurses-devel \
+	readline-devel
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -36,4 +42,5 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-test -f /home/$LOGNAME/.asdf/asdf.sh || git clone https://github.com/asdf-vm/asdf.git /home/$LOGNAME/.asdf
+test -f /home/$LOGNAME/.asdf/asdf.sh || \ 
+sudo -u $LOGNAME git clone https://github.com/asdf-vm/asdf.git /home/$LOGNAME/.asdf
