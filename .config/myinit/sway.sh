@@ -57,3 +57,6 @@ export XWAYLAND_NO_GLAMOR=1
 
 exec sway --unsupported-gpu
 EOF
+
+chmod +x /usr/bin/nvsway
+
