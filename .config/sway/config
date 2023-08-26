@@ -6,7 +6,7 @@
 
 include "~/.config/sway/$(hostname)"
 
-exec_always autotiling
+exec_always ~/.asdf/shims/autotiling
 
 ### Variables
 #
