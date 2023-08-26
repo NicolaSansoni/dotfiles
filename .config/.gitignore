@@ -6,6 +6,15 @@
 !i3
 !i3/**
 
+!sway
+!sway/**
+
+!wofi
+!wofi/**
+
+!waybar
+!waybar/**
+
 !nvim
 !nvim/**
 

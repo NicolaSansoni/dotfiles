@@ -27,5 +27,7 @@ fi
 
 unset rc
 
+export WLR_NO_HARDWARE_CURSORS=1
+
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
