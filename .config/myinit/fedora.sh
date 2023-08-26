@@ -24,6 +24,7 @@ dnf install -y \
 	ripgrep \
 	flatpak \
 	zstd \
+	jq \
 	tldr \
 	tk-devel \
 	sqlite-devel \

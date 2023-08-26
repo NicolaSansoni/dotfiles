@@ -268,3 +268,9 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Screenshot
+
+## Screenshots
+bindsym Print exec --no-startup-id grim -t png -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') | wl-copy -t image/png
+bindsym Shift+Print exec --no-startup-id grim -t png -g "$(slurp)" | wl-copy -t image/png
