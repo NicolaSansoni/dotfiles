@@ -19,6 +19,8 @@ dnf install -y \
 	light \
 	playerctl
 
+pip install autotiling
+
 # Configs
 
 # mkdir -p /etc/lightdm/lightdm.conf.d && tee /etc/lightdm/lightdm.conf.d/10-autologin.conf <<'EOF' 1>/dev/null

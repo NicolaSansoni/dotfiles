@@ -18,6 +18,8 @@ dnf install -y \
 	light \
 	playerctl
 
+pip install autotiling
+
 # Configs
 mkdir -p /usr/share/wayland-sessions && tee /usr/share/wayland-sessions/nvsway.desktop <<'EOF' 1>/dev/null
 [Desktop Entry]
