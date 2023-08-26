@@ -9,7 +9,7 @@ cd /home/$LOGNAME
 # Update and install tools
 dnf install -y \
 	sway \
-	wofi \
+	rofi-wayland \
 	wdisplays \
 	waybar \
 	grim \

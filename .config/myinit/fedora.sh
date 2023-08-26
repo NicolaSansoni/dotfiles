@@ -31,7 +31,8 @@ dnf install -y \
 	libffi-devel \
 	bzip2-devel \
 	ncurses-devel \
-	readline-devel 
+	readline-devel \
+	parallel 
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -60,6 +61,9 @@ for P in ${cat .tool-versions | awk '{print $1}'}; do
 	asdf plugin-add $P
 done
 asdf install
+for P in ${cat .tool-versions | awk '{print $1}'}; do
+	asdf reshim $P
+done
 
 # Font
 mkdir caskaydia-font
