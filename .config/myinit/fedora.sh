@@ -1,6 +1,12 @@
 #!/bin/bash
 
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run as root." >&2
+	exit 1
+fi
+
 LOGNAME=$(logname)
+
 cd /home/$LOGNAME
 
 # Update and install tools
@@ -32,7 +38,7 @@ dnf install -y \
 	bzip2-devel \
 	ncurses-devel \
 	readline-devel \
-	parallel 
+	parallel
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -53,25 +59,33 @@ groupadd docker
 usermod -aG docker $LOGNAME
 
 # Asdf
-cd /home/$LOGNAME
-test -f .asdf/asdf.sh || \ 
-sudo -u $LOGNAME git clone https://github.com/asdf-vm/asdf.git .asdf
-exec .asdf/asdf.sh
-for P in ${cat .tool-versions | awk '{print $1}'}; do
+sudo -u $LOGNAME -- bash <<'EOF'
+cd 
+if ! [ -f .asdf/bin/asdf ]; then
+	git clone https://github.com/asdf-vm/asdf.git .asdf
+fi
+
+source .asdf/asdf.sh
+
+for P in $(cat .tool-versions | awk '{print $1}'); do
 	asdf plugin-add $P
 done
+
 asdf install
-for P in ${cat .tool-versions | awk '{print $1}'}; do
+
+for P in $(cat .tool-versions | awk '{print $1}'); do
 	asdf reshim $P
 done
+EOF
 
 # Font
-mkdir caskaydia-font
-cd caskaydia-font
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip
-unzip *.zip
-mv *.ttf /usr/share/fonts/
-fc-cache -f -v
-cd ..
-rm -rf caskaydia-font
-
+if ! fc-list | grep -q 'CaskaydiaCove NF'; then
+	mkdir caskaydia-font
+	cd caskaydia-font
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip
+	unzip *.zip
+	mv *.ttf /usr/share/fonts/
+	fc-cache -f -v
+	cd ..
+	rm -rf caskaydia-font
+fi

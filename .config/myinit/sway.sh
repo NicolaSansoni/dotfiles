@@ -1,9 +1,15 @@
 #!/bin/bash
 
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run as root." >&2
+	exit 1
+fi
+
 # Prerequisites
-exec ./fedora.sh
+$(dirname $0)/fedora.sh
 
 LOGNAME=$(logname)
+
 cd /home/$LOGNAME
 
 # Update and install tools
@@ -18,7 +24,11 @@ dnf install -y \
 	light \
 	playerctl
 
+sudo -u $LOGNAME -- bash <<'EOF'
+cd 
+source .asdf/asdf.sh
 pip install autotiling
+EOF
 
 # Configs
 mkdir -p /usr/share/wayland-sessions && tee /usr/share/wayland-sessions/nvsway.desktop <<'EOF' 1>/dev/null

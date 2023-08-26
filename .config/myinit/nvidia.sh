@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run as root." >&2
+	exit 1
+fi
+
 LOGNAME=$(logname)
 cd /home/$LOGNAME
 
@@ -10,4 +15,4 @@ dnf install -y \
 
 dnf install -y \
 	akmod-nvidia \
-	xord-x11-drv-nvidia-cuda
+	xorg-x11-drv-nvidia-cuda
