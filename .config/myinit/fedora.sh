@@ -24,6 +24,8 @@ dnf group install --with-optional -y \
 systemctl enable libvirtd
 systemctl start libvirtd
 
+usermod -aG libvirtd $LOGNAME
+
 dnf install -y \
 	neovim \
 	alacritty \
@@ -55,7 +57,6 @@ dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker
 systemctl enable docker
 systemctl start docker
 
-groupadd docker
 usermod -aG docker $LOGNAME
 
 # Asdf
