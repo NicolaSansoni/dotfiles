@@ -78,6 +78,12 @@ for P in $(cat .tool-versions | awk '{print $1}'); do
 done
 EOF
 
+# Grub
+if ! grep -q GRUB_SAVEDEFAULT /etc/default/grub; then
+	echo GRUB_SAVEDEFAULT=true >>/etc/default/grub
+	grub2-mkconfig -o /boot/grub2/grub.cfg
+fi
+
 # Font
 if ! fc-list | grep -q 'CaskaydiaCove NF'; then
 	mkdir caskaydia-font
