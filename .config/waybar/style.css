@@ -16,7 +16,6 @@
   border-radius: 0;
   font-family: CaskaydiaCove NF;
   font-size: 12px;
-  min-height: 0;
 }
 window#waybar {
   opacity: 0.9;
