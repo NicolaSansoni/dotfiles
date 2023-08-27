@@ -24,7 +24,7 @@ dnf group install --with-optional -y \
 systemctl enable libvirtd
 systemctl start libvirtd
 
-usermod -aG libvirtd $LOGNAME
+usermod -aG libvirt $LOGNAME
 
 dnf install -y \
 	neovim \
