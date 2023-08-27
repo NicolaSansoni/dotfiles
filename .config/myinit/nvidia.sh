@@ -5,6 +5,7 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
+DIR=$(dirname $0 | xargs realpath)
 LOGNAME=$(logname)
 cd /home/$LOGNAME
 

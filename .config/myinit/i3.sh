@@ -6,7 +6,8 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Prerequisites
-$(dirname $0)/fedora.sh
+DIR=$(dirname $0 | xargs realpath)
+$DIR/fedora.sh
 
 LOGNAME=$(logname)
 

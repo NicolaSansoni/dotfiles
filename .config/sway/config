@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-include "~/.config/sway/$(hostname)"
+include "~/.config/sway/$(hostname)/config"
 
 exec_always ~/.asdf/shims/autotiling
 
