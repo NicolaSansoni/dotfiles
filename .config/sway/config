@@ -243,6 +243,7 @@ focus_follows_mouse no
 mouse_warping none
 
 default_border pixel 2
+default_floating_border pixel 2
 gaps inner 8
 
 # class                 border  bground text    indicator child_border
