@@ -1,5 +1,5 @@
-output DP-2     mode 3840x2160@144Hz position 0,0    scale 2
-output HDMI-A-1 mode 1920x1080@60Hz  position 1920,0 scale 1
+output DP-2     mode 3840x2160@144Hz position 0,0    scale 2 scale_filter nearest adaptive_sync on
+output HDMI-A-1 mode 1920x1080@60Hz  position 1920,0 scale 1 scale_filter nearest
 
 workspace 1 output DP-2 HDMI-A-1
 workspace 2 output DP-2 HDMI-A-1
