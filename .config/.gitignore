@@ -3,10 +3,6 @@
 *
 !.gitignore
 
-!electron-flags.conf
-!chromium-flags.conf
-!chrome-flags.conf
-
 !i3
 !i3/**
 
