@@ -246,16 +246,21 @@ default_border pixel 2
 default_floating_border pixel 2
 gaps inner 8
 
-# class                 border  bground text    indicator child_border
-client.focused          #BD93F9 #51A2DA #FFFFFF #BD93F9   #BD93F9
-# client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-# client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
-client.focused_inactive #020202 #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-client.unfocused        #020202 #222222 #888888 #292D2E   #222222
-client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+# colors
+set $clr_text         #ffffff
+set $clr_focused      #bd93f9
+set $clr_inactive     #202020
+set $clr_unfocused    #202020
+set $clr_urgent       #ff3366
+set $clr_placeholder  #00000088
+client.background     #00000088
 
-client.background       #000000
+client.focused          $clr_focused     $clr_focused     $clr_text $clr_focused     $clr_focused
+client.focused_inactive $clr_inactive    $clr_inactive    $clr_text $clr_inactive    $clr_inactive
+client.unfocused        $clr_unfocused   $clr_unfocused   $clr_text $clr_unfocused   $clr_unfocused
+client.urgent           $clr_urgent      $clr_urgent      $clr_text $clr_urgent      $clr_urgent
+client.placeholder      $clr_placeholder $clr_placeholder $clr_text $clr_placeholder $clr_placeholder
+
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%

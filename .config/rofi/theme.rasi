@@ -21,7 +21,7 @@ configuration {
 }
 
 #window {
-    background-color: #131521bb;
+    background-color: #131521cc;
     border:           2;
     border-radius:    2;
     border-color:     @bordercolor;
