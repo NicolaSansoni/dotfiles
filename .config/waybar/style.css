@@ -1,5 +1,5 @@
 @define-color background-darker rgba(30, 31, 41, 230);
-@define-color background #282a36;
+@define-color background #323440;
 @define-color selection #44475a;
 @define-color foreground #f8f8f2;
 @define-color comment #6272a4;
@@ -21,17 +21,13 @@ window#waybar {
   opacity: 0.9;
   background: @background-darker;
   color: @foreground;
-  border-bottom: 2px solid @background;
 }
 
 #workspaces button {
   padding: 0px 10px;
   background: @background-darker;
   color: @foreground;
-}
-
-#workspaces button.current_output.visible {
-  background: @background;
+  transition: none;
 }
 
 #workspaces button.current_output.focused {
@@ -41,7 +37,7 @@ window#waybar {
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  background-image: linear-gradient(0deg, @selection, @background-darker);
+  background: @background;
 }
 
 #workspaces button.active {
@@ -54,5 +50,4 @@ window#waybar {
 
 #clock {
   padding: 0 4px;
-  background: @background;
 }
