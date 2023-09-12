@@ -3,29 +3,17 @@
 *
 !.gitignore
 
+!alacritty
+!alacritty/**
+
 !i3
 !i3/**
 
-!sway
-!sway/**
-
-!swaylock
-!swaylock/**
-
-!wofi
-!wofi/**
-
-!waybar
-!waybar/**
+!myinit
+!myinit/**
 
 !nvim
 !nvim/**
-
-!tostapane-i3
-!tostapane-i3/**
-
-!alacritty
-!alacritty/**
 
 !picom
 !picom/**
@@ -36,5 +24,20 @@
 !rofi
 !rofi/**
 
-!myinit
-!myinit/**
+!sway
+!sway/**
+
+!swaylock
+!swaylock/**
+
+!tostapane-i3
+!tostapane-i3/**
+
+!tmux
+!tmux/**
+
+!waybar
+!waybar/**
+
+!wofi
+!wofi/**
