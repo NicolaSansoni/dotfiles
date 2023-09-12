@@ -11,6 +11,10 @@ SWAY_EXTRA_ARGS=""
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
 
 ## Hardware compatibility
 # We can't be sure that the virtual GPU is compatible with Sway.
@@ -46,9 +50,6 @@ if [ -f /proc/driver/nvidia/version ]; then
 	export WLR_NO_HARDWARE_CURSORS=1
 	export WLR_RENDERER=vulkan
 	export QT_QPA_PLATFORM=wayland
-	export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-	export MOZ_ENABLE_WAYLAND=1
-	export MOZ_USE_XINPUT2=1
 	export GBM_BACKEND=nvidia-drm
 	export __GL_GSYNC_ALLOWED=0
 	export __GL_VRR_ALLOWED=0
