@@ -176,9 +176,22 @@ return {
         },
       }
 
-      vim.keymap.set('n', '\\', ':Neotree close<CR>:Neotree reveal<CR>', { desc = 'Open File tree' })
-      vim.keymap.set('n', '<leader>\\', ':Neotree close<CR>:Neotree document_symbols reveal<CR>',
-        { desc = 'Open Symbols tree' })
+      vim.keymap.set(
+        'n',
+        '\\',
+        ':Neotree reveal<CR>\z
+         :sleep 50m<CR>\z
+         :Neotree reveal<CR>',
+        { desc = 'Open File tree' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>\\',
+        ':Neotree document_symbols reveal<CR>\z
+         :sleep 50m<CR>\z
+         :Neotree document_symbols reveal<CR>',
+        { desc = 'Open Symbols tree' }
+      )
     end,
   },
 }
