@@ -5,3 +5,6 @@ if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/sway/$(hostname)/environment" ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}/sway/$(hostname)/environment"
 	set +o allexport
 fi
+
+export TERMINAL=/usr/bin/alacritty
+
