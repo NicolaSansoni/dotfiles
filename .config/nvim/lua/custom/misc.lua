@@ -33,7 +33,7 @@ return {
 
   'f-person/git-blame.nvim',
 
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   { 'numToStr/Comment.nvim', opts = {} },
 
   {
@@ -55,6 +55,7 @@ return {
 
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,

@@ -34,6 +34,7 @@ dnf install -y \
 	flatpak \
 	zstd \
 	jq \
+	fzf \
 	tldr \
 	tk-devel \
 	sqlite-devel \
