@@ -238,7 +238,7 @@ bar {
 
 font pango:CaskaydiaCove NF 10
 
-focus_on_window_activation focus
+# focus_on_window_activation focus
 focus_follows_mouse no
 mouse_warping none
 
