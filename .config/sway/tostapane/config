@@ -14,3 +14,11 @@ workspace 0 output HDMI-A-1
 
 workspace number 0
 workspace number 1
+
+input type:tablet_tool {
+  map_to_output DP-2
+}
+
+input type:touchpad {
+  events disabled
+}
