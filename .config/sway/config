@@ -281,8 +281,15 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Screenshot
 
 ## Screenshots
-bindsym Print exec --no-startup-id grim -t png -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') | wl-copy -t image/png
-bindsym Shift+Print exec --no-startup-id grim -t png -g "$(slurp)" | wl-copy -t image/png
+set $screenshot exec --no-startup-id grim -t png -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') | wl-copy -t image/png
+
+set $snippet exec --no-startup-id grim -t png -g "$(slurp)" | wl-copy -t image/png
+
+bindsym Print $screenshot
+bindsym Shift+Print $snippet
+
+bindsym $mod+P $screenshot
+bindsym $mod+Shift+P $snippet
 
 exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
