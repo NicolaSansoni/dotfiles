@@ -12,6 +12,7 @@ cd /home/$LOGNAME
 
 pacman -Syu
 
+# virualization
 pacman -S --noconfirm libvirt virt-manager
 
 systemctl enable libvirtd
@@ -19,6 +20,7 @@ systemctl start libvirtd
 
 usermod -aG libvirt $LOGNAME
 
+# general utils
 pacman -R --noconfirm xterm
 
 pacman -S --noconfirm \
@@ -56,4 +58,20 @@ asdf install
 for P in $(cat .tool-versions | awk '{print $1}'); do
 	asdf reshim $P
 done
+EOF
+
+# audio
+
+pacman -S --noconfirm \
+	pipewire \
+	wireplumber \
+	pipewire-pulse \
+	pavucontrol
+
+mkdir -p /etc/X11/xinit/xinitrc.d && tee /etc/X11/xinit/xinitrc.d/60-audio.sh <<'EOF' 1>/dev/null
+#!/bin/sh
+
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+/usr/bin/wireplumber &
 EOF
