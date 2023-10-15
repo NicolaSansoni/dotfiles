@@ -88,15 +88,15 @@ set $dp DP-2
 set $hdmi HDMI-0
 
 workspace 1 output $dp $hdmi
-workspace 1 output $dp $hdmi
-workspace 1 output $dp $hdmi
-workspace 1 output $dp $hdmi
-workspace 1 output $dp $hdmi
-workspace 1 output $hdmi
-workspace 1 output $hdmi
-workspace 1 output $hdmi
-workspace 1 output $hdmi
-workspace 1 output $hdmi
+workspace 2 output $dp $hdmi
+workspace 3 output $dp $hdmi
+workspace 4 output $dp $hdmi
+workspace 5 output $dp $hdmi
+workspace 6 output $hdmi
+workspace 7 output $hdmi
+workspace 8 output $hdmi
+workspace 9 output $hdmi
+workspace 0 output $hdmi
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
