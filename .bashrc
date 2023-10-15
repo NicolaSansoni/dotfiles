@@ -27,7 +27,7 @@ fi
 
 unset rc
 
-export EDITOR="/usr/bin/vi"
+export EDITOR="/usr/bin/nvim"
 
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"

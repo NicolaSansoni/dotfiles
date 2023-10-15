@@ -9,17 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec_always --no-startup-id autotiling
+include "~/.config/i3/$(hostname)/config"
 
-# mouse accel
-exec --no-startup-id xset m 0
-# bell 
-exec --no-startup-id xset b 0
-# sleep timer
-exec --no-startup-id xset s 0
-exec --no-startup-id xset -dpms
-# keyboard
-exec --no-startup-id setxkbmap 'us,us(intl)' -option 'grp:ctrls_toggle'
+exec_always --no-startup-id ~/.asdf/shims/autotiling
+
 
 set $mod Mod4
 
@@ -47,7 +40,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-focus_on_window_activation focus
+# focus_on_window_activation focus
 focus_follows_mouse no
 mouse_warping none
 
@@ -224,20 +217,28 @@ bindsym Print exec --no-startup-id maim | tee "/home/$USER/Pictures/$(date)" | x
 bindsym Shift+Print exec --no-startup-id maim --select | tee "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
 
 default_border pixel 2
+default_floating_border pixel 2
 gaps inner 8
 
-# class                 border  bground text    indicator child_border
-client.focused          #F0C674 #51A2DA #FFFFFF #F0C674   #F0C674
-# client.focused_inactive #8C8C8C #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-# client.unfocused        #4C4C4C #222222 #888888 #292D2E   #222222
-client.focused_inactive #020202 #4C4C4C #FFFFFF #4C4C4C   #8C8C8C
-client.unfocused        #020202 #222222 #888888 #292D2E   #222222
-client.urgent           #EC69A0 #DB3279 #FFFFFF #DB3279   #DB3279
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+# colors
+set $clr_text         #ffffff
+set $clr_focused      #bd93f9
+set $clr_inactive     #202020
+set $clr_unfocused    #202020
+set $clr_urgent       #ff3366
+set $clr_placeholder  #00000088
+client.background     #00000088
 
-client.background       #000000
+client.focused          $clr_focused     $clr_focused     $clr_text $clr_focused     $clr_focused
+client.focused_inactive $clr_inactive    $clr_inactive    $clr_text $clr_inactive    $clr_inactive
+client.unfocused        $clr_unfocused   $clr_unfocused   $clr_text $clr_unfocused   $clr_unfocused
+client.urgent           $clr_urgent      $clr_urgent      $clr_text $clr_urgent      $clr_urgent
+client.placeholder      $clr_placeholder $clr_placeholder $clr_text $clr_placeholder $clr_placeholder
+
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id picom -b
 
+exec --no-startup-id i3-msg workspace 0
+exec --no-startup-id i3-msg workspace 1
