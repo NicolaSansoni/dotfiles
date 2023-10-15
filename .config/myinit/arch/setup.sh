@@ -12,6 +12,16 @@ cd /home/$LOGNAME
 
 pacman -Syu
 
+# aur
+pacman -S --needed --noconfirm git base-devel
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd tmp/yay
+makepkg -si --noconfirm
+rm -rf /tmp/yay
+yay -Y --gendb
+yay -Y --devel --save
+yay -Syu
+
 # virualization
 pacman -S --noconfirm libvirt virt-manager
 
@@ -40,7 +50,6 @@ pacman -S --noconfirm \
 	parallel \
 	ttf-cascadia-code-nerd
 
-# Asdf
 sudo -u $LOGNAME -- bash <<'EOF'
 cd 
 if ! [ -f .asdf/bin/asdf ]; then
