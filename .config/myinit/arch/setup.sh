@@ -23,7 +23,7 @@ yay -Y --devel --save
 yay -Syu
 
 # virualization
-pacman -S --noconfirm qemu-full libvirt virt-manager
+pacman -S --noconfirm dnsmasq qemu-full libvirt virt-manager
 
 systemctl enable libvirtd
 systemctl start libvirtd
