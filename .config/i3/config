@@ -144,8 +144,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Screenshots
-bindsym Print exec --no-startup-id maim | tee "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
-bindsym Shift+Print exec --no-startup-id maim --select | tee "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
+set $screenshot exec --no-startup-id maim | tee "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
+
+set $snippet exec --no-startup-id maim --select | tee "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
+
+bindsym Print $screenshot
+bindsym Shift+Print $snippet
+
+bindsym $mod+P $screenshot
+bindsym $mod+Shift+P $snippet
 
 default_border pixel 2
 default_floating_border pixel 2
