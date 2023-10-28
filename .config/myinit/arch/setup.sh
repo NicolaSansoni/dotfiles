@@ -12,15 +12,15 @@ cd /home/$LOGNAME
 
 pacman -Syu
 
-# aur
-pacman -S --needed --noconfirm git base-devel
-git clone https://aur.archlinux.org/yay.git /tmp/yay
-cd tmp/yay
-makepkg -si --noconfirm
-rm -rf /tmp/yay
-yay -Y --gendb
-yay -Y --devel --save
-yay -Syu
+# # aur
+# pacman -S --needed --noconfirm git base-devel
+# git clone https://aur.archlinux.org/yay.git /tmp/yay
+# cd tmp/yay
+# sudo -u $LOGNAME makepkg -si --noconfirm
+# rm -rf /tmp/yay
+# yay -Y --gendb
+# yay -Y --devel --save
+# yay -Syu
 
 # virualization
 pacman -S --noconfirm dnsmasq qemu-full libvirt virt-manager

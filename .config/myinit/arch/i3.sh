@@ -17,8 +17,7 @@ cd /home/$LOGNAME
 pacman -S --noconfirm \
 	rofi \
 	arandr \
-	xset \
-	xinput \
+	xorg-apps \
 	picom \
 	polybar \
 	maim \
