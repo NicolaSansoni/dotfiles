@@ -7,7 +7,7 @@ fi
 
 # Prerequisites
 DIR=$(dirname $0 | xargs realpath)
-$DIR/setup.sh
+# $DIR/setup.sh
 
 LOGNAME=$(logname)
 
@@ -17,8 +17,7 @@ cd /home/$LOGNAME
 pacman -S --noconfirm \
 	rofi \
 	arandr \
-	xset \
-	xinput \
+	xorg-apps \
 	picom \
 	polybar \
 	maim \

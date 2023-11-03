@@ -7,7 +7,7 @@ fi
 
 # Prerequisites
 DIR=$(dirname $0 | xargs realpath)
-$DIR/setup.sh
+# $DIR/setup.sh
 
 LOGNAME=$(logname)
 

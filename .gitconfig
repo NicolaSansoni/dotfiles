@@ -8,4 +8,4 @@
 	clean = "sed '/^#gitignore$/{N;d}'; sed '/#gitignore$/d';"
 	smudge = cat
 [core]
-	editor = vi
+	editor = nvim
