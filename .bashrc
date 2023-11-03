@@ -15,6 +15,7 @@ export PATH
 # export SYSTEMD_PAGER=
 
 alias gitlc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
+alias sudo="sudo "
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
@@ -24,7 +25,6 @@ if [ -d ~/.bashrc.d ]; then
 		fi
 	done
 fi
-
 unset rc
 
 export EDITOR="/usr/bin/nvim"
