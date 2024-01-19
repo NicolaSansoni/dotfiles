@@ -31,3 +31,13 @@ export EDITOR="/usr/bin/nvim"
 
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
+
+# fzf
+if [ -d /usr/share/fzf ]; then
+	for rc in /usr/share/fzf/*.bash; do
+		if [ -f "$rc" ]; then
+			. "$rc"
+		fi
+	done
+fi
+unset rc
