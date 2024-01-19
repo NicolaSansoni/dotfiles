@@ -25,8 +25,23 @@ return {
     },
   },
   -- ui elements
-  -- { "stevearc/dressing.nvim", enabled = false },
-  { "folke/noice.nvim", enabled = false },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        view = "cmdline",
+        format = {
+          conceal = false,
+          cmdline = false,
+          search_down = false,
+          search_up = false,
+          filter = false,
+          lua = false,
+          help = false,
+        },
+      },
+    },
+  },
 
   -- dashboard and greeter
   { "nvimdev/dashboard-nvim", enabled = false },
