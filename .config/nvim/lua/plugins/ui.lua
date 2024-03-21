@@ -43,7 +43,8 @@ return {
     },
   },
 
-  -- dashboard and greeter
+  -- dashboard, greeter and tabs
   { "nvimdev/dashboard-nvim", enabled = false },
   { "goodlord/alpha-nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = false },
 }
