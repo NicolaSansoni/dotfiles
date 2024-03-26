@@ -26,8 +26,9 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       { "<leader>ff", ts("find_files"), desc = "Find Files" },
+      { "<leader>fF", false },
       {
-        "<leader>fF",
+        "<leader>faf",
         ts("find_files", { hidden = true, no_ignore = true }),
         desc = "Find All Files",
       },
@@ -48,4 +49,6 @@ return {
       },
     },
   },
+
+  { "folke/flash.nvim", enabled = false },
 }
