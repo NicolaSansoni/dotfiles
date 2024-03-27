@@ -15,4 +15,20 @@ return {
       })
     end,
   },
+
+  {
+    "L3MON4D3/LuaSnip",
+    keys = {
+      { "<tab>", mode = { "i", "s" }, false },
+      { "<s-tab>", mode = { "i", "s" }, false },
+
+      {
+        "<c-tab>",
+        function()
+          require("luasnip").jump(1)
+        end,
+        mode = { "i", "s" },
+      },
+    },
+  },
 }
