@@ -4,3 +4,5 @@
 vim.opt.clipboard = "unnamed"
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.foldmethod = "indent"
+vim.opt.foldexpr = ""
