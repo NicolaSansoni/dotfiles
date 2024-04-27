@@ -47,6 +47,27 @@ return {
         mode = "v",
         desc = "Selection (cwd)",
       },
+      {
+        "<leader>ss",
+        function()
+          require("telescope.builtin").lsp_document_symbols({
+            symbol_width = 80,
+            symbols = require("lazyvim.config").get_kind_filter(),
+          })
+        end,
+        desc = "Goto Symbol",
+      },
+      {
+        "<leader>sS",
+        function()
+          require("telescope.builtin").lsp_dynamic_workspace_symbols({
+            fname_width = 40,
+            symbol_width = 40,
+            symbols = require("lazyvim.config").get_kind_filter(),
+          })
+        end,
+        desc = "Goto Symbol (Workspace)",
+      },
     },
   },
 
