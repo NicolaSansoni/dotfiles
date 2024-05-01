@@ -8,6 +8,13 @@ end
 
 return {
   {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    keys = {
+      { "<leader>su", vim.cmd.UndotreeToggle, desc = "Undo history" },
+    },
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
