@@ -7,3 +7,5 @@ vim.opt.tabstop = 4
 vim.opt.scrolloff = 10
 vim.opt.cursorline = false
 vim.opt.foldmethod = "manual"
+vim.opt.wrap = true
+vim.opt.linebreak = true
