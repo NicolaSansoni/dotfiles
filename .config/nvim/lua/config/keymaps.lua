@@ -27,3 +27,8 @@ vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
 vim.keymap.del("n", "[b")
 vim.keymap.del("n", "]b")
+
+-- disable lazygit
+vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("n", "<leader>gG")
+vim.keymap.del("n", "<leader>gf")

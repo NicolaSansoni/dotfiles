@@ -42,6 +42,14 @@ return {
       },
     },
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      extensions = {
+        "fugitive",
+      },
+    },
+  },
 
   -- dashboard, greeter and tabs
   { "nvimdev/dashboard-nvim", enabled = false },
