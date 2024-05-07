@@ -1,26 +1,25 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = { { "nvim-treesitter/playground" } },
-    opts = {
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	event = { "VeryLazy" },
+	-- event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" }, -- in case "VeryLazy" is not enough by itself
+	opts = {
+		auto_install = true,
+		highlight = {
+			enable = true,
+			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --  If you are experiencing weird indenting issues, add the language to
+        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        additional_vim_regex_highlighting = { 'ruby' },
       },
-    },
-  },
+      indent = { enable = true, disable = { 'ruby' } },
+	},
+	config = function (_, opts)
+		require('nvim-treesitter.configs').prefer_git = true
+		require('nvim-treesitter.configs').setup(opts)
+	end,
+	init = function(plugin)
+		require("lazy.core.loader").add_to_rtp(plugin)
+		require("nvim-treesitter.query_predicates")
+	end,
 }
