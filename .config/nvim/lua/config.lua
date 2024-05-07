@@ -5,6 +5,8 @@ vim.g.maplocalleader = "\\"
 
 vim.g.autoformat = true
 
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.cindent = false
 vim.opt.formatoptions = "jcqlnt"
 vim.opt.mouse = "a"
 vim.opt.grepprg = "rg --vimgrep"
@@ -19,17 +21,19 @@ vim.opt.shiftwidth = 4
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
+vim.opt.smartindent = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
+vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.virtualedit = "block"
 
--- vim.opt.autowrite = true 
+-- vim.opt.autowrite = true
 -- vim.opt.completeopt = "menu,menuone,noselect"
--- vim.opt.conceallevel = 0 
+-- vim.opt.conceallevel = 0
 -- vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
 -- vim.opt.cursorline = true -- Enable highlighting of the current line
 -- vim.opt.expandtab = true -- Use spaces instead of tabs
@@ -101,72 +105,84 @@ vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- diagnostic
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "Prev Diagnostic" })
-vim.keymap.set("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR"}) end, { desc = "Next Error" })
-vim.keymap.set("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR"}) end, { desc = "Prev Error" })
-vim.keymap.set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN"}) end, { desc = "Next Warning" })
-vim.keymap.set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN"}) end, { desc = "Prev Warning" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.goto_next()
+end, { desc = "Next Diagnostic" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.goto_prev()
+end, { desc = "Prev Diagnostic" })
+vim.keymap.set("n", "]e", function()
+    vim.diagnostic.goto_next({ severity = "ERROR" })
+end, { desc = "Next Error" })
+vim.keymap.set("n", "[e", function()
+    vim.diagnostic.goto_prev({ severity = "ERROR" })
+end, { desc = "Prev Error" })
+vim.keymap.set("n", "]w", function()
+    vim.diagnostic.goto_next({ severity = "WARN" })
+end, { desc = "Next Warning" })
+vim.keymap.set("n", "[w", function()
+    vim.diagnostic.goto_prev({ severity = "WARN" })
+end, { desc = "Prev Warning" })
 
 -- AUTOCOMMANDS --
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "c", "cpp" },
-  callback = function(ev)
-    vim.bo.commentstring = "//%s"
-  end,
+    pattern = { "c", "cpp" },
+    callback = function(ev)
+        vim.bo.commentstring = "//%s"
+    end,
 })
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-  callback = function()
-    if vim.o.buftype ~= "nofile" then
-      vim.cmd("checktime")
-    end
-  end,
+    callback = function()
+        if vim.o.buftype ~= "nofile" then
+            vim.cmd("checktime")
+        end
+    end,
 })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function(event)
-    local exclude = { "gitcommit" }
-    local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
-      return
-    end
-    vim.b[buf].lazyvim_last_loc = true
-    local mark = vim.api.nvim_buf_get_mark(buf, '"')
-    local lcount = vim.api.nvim_buf_line_count(buf)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
+    callback = function(event)
+        local exclude = { "gitcommit" }
+        local buf = event.buf
+        if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
+            return
+        end
+        vim.b[buf].lazyvim_last_loc = true
+        local mark = vim.api.nvim_buf_get_mark(buf, '"')
+        local lcount = vim.api.nvim_buf_line_count(buf)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end,
 })
 
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.linebreak = true
-    vim.opt_local.spell = true
-  end,
+    pattern = { "gitcommit", "markdown" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.spell = true
+    end,
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  callback = function(event)
-    if event.match:match("^%w%w+:[\\/][\\/]") then
-      return
-    end
-    local file = vim.uv.fs_realpath(event.match) or event.match
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-  end,
+    callback = function(event)
+        if event.match:match("^%w%w+:[\\/][\\/]") then
+            return
+        end
+        local file = vim.uv.fs_realpath(event.match) or event.match
+        vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+    end,
 })
