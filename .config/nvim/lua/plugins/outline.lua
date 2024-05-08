@@ -5,6 +5,9 @@ return {
         keys = {
             { "<leader>so", "<cmd>Outline<CR>", desc = "Show Outline" },
         },
-        opts = {},
+        opts = {
+            relative_width = false,
+            width = 36,
+        },
     },
 }
