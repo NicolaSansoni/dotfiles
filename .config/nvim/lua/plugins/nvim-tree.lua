@@ -56,21 +56,26 @@ return {
                     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
                 end
 
-                vim.keymap.set("n", "<C-e>", require("nvim-tree.api").node.open.replace_tree_buffer, opts("open"))
-                vim.keymap.set("n", "o", require("nvim-tree.api").node.open.replace_tree_buffer, opts("open"))
-                vim.keymap.set("n", "<CR>", require("nvim-tree.api").node.open.replace_tree_buffer, opts("open"))
+                local api = require("nvim-tree.api")
+
+                api.config.mappings.default_on_attach(bufnr)
+
+                vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
+                vim.keymap.set("n", "o", api.node.open.replace_tree_buffer, opts("Open: In Place"))
+                vim.keymap.set("n", "<CR>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
+                vim.keymap.set("n", "<2-LeftMouse>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
 
                 vim.keymap.set("n", "<C-v>", function()
                     open_node_with_cmd("leftabove vsplit")
-                end, opts("open"))
+                end, opts("Open: Vertical Split"))
 
                 vim.keymap.set("n", "<C-x>", function()
                     open_node_with_cmd("rightbelow split")
-                end, opts("open"))
+                end, opts("Open: Horizontal Split"))
 
                 vim.keymap.set("n", "<C-t>", function()
                     open_node_with_cmd("tabnew")
-                end, opts("open"))
+                end, opts("Open: New Tab"))
             end,
         },
 
