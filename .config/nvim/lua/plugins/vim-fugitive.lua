@@ -19,4 +19,12 @@ return {
             "GBrowse",
         },
     },
+    {
+        "nvim-lualine/lualine.nvim",
+        opts = {
+            extensions = {
+                "fugitive",
+            },
+        },
+    },
 }

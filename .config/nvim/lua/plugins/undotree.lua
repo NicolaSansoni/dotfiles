@@ -1,12 +1,14 @@
 return {
     {
         "mbbill/undotree",
-        cmd = "UndotreeToggle",
+        cmd = { "UndotreeToggle", "UndotreeShow" },
         keys = {
-            { "<leader>su", vim.cmd.UndotreeToggle, desc = "Undo history" },
+            { "<leader>su", "<cmd>UndotreeToggle<cr>", desc = "Undo history" },
+            -- { "<leader>su", "<cmd>UndotreeShow<cr>", desc = "Undo history" },
         },
         init = function()
-            vim.g.undotree_WindowLayout = 3
+            vim.g.undotree_ShortIndicators = 1
+            vim.g.undotree_WindowLayout = 1
             vim.g.undotree_SplitWidth = 36
         end,
     },

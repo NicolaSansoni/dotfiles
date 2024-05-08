@@ -7,7 +7,7 @@ return {
     },
     opts = {
         extensions = {
-            "fugitive",
+            "quickfix",
         },
     },
     init = function()
