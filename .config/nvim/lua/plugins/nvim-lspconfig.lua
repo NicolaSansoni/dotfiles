@@ -8,6 +8,9 @@ return {
             "folke/neodev.nvim",
         },
         event = { "VeryLazy" },
+        opts = {
+            servers = {},
+        },
         config = function(_, opts)
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(event)
@@ -52,6 +55,7 @@ return {
             local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
             require("mason-lspconfig").setup({
+                automatic_installation = true,
                 ensure_installed = vim.tbl_keys(opts.servers),
                 handlers = {
                     function(server_name)
@@ -73,7 +77,9 @@ return {
         "williamboman/mason.nvim",
         cmd = "Mason",
         build = ":MasonUpdate",
-        opts = {},
+        opts = {
+            ensure_installed = {},
+        },
         config = function(_, opts)
             require("mason").setup(opts)
             require("mason-registry"):on("package:install:success", function()

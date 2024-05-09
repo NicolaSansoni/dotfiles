@@ -7,6 +7,7 @@ vim.g.autoformat = true
 
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.cindent = false
+vim.opt.expandtab = true
 vim.opt.formatoptions = "jcqlnt"
 vim.opt.mouse = "a"
 vim.opt.grepprg = "rg --vimgrep"

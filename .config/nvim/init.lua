@@ -25,6 +25,9 @@ require("lazy").setup({
     install = {
         colorscheme = { "onedark" },
     },
+    change_detection = {
+        notify = false,
+    },
 })
 
 vim.cmd.colorscheme("onedark")

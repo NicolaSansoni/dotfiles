@@ -18,8 +18,8 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         keys = {
-            { "<leader>sf", open_in_current_buffer, { desc = "Open File Tree", silent = true } },
-            { "-", open_in_current_buffer, { desc = "Open File Tree", silent = true } },
+            { "<leader>sf", open_in_current_buffer, desc = "Open File Tree", silent = true },
+            { "-", open_in_current_buffer, desc = "Open File Tree", silent = true },
         },
         opts = {
             -- Many of the options aim to make it more similar to Netrw by treating it as a normal buffer

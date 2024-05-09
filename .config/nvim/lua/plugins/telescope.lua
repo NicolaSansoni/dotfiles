@@ -7,18 +7,30 @@ return {
             "nvim-telescope/telescope-fzf-native.nvim",
         },
         cmd = { "Telescope" },
-        keys = {
-            { "<leader><leader>", "<cmd>Telescope buffers<cr>", { desc = "Telescope Buffers" } },
-            { "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find Files" } },
-            {
-                "<leader>fa",
-                function()
-                    require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
-                end,
-                { desc = "Telescope Find All" },
+        opts = {
+            pickers = {
+                find_files = {
+                    hidden = true,
+                },
+                live_grep = {
+                    additional_args = {
+                        "--hidden",
+                    },
+                },
             },
-            { "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Telescope Git Files" } },
         },
+        -- stylua: ignore
+        keys = {
+            { "<leader><leader>", function() require("telescope.builtin").buffers({}) end, desc = "Telescope Buffers" },
+            { "<leader>/", function() require("telescope.builtin").live_grep({}) end, desc = "Telescope grep" },
+            { "<leader>ff", function() require("telescope.builtin").find_files({}) end, desc = "Telescope Find Files" },
+            { "<leader>fa", function() require("telescope.builtin").find_files({ no_ignore = true }) end, desc = "Telescope Find All" },
+            { "<leader>fg", function() require("telescope.builtin").git_files({}) end, desc = "Telescope Git Files" },
+        },
+        config = function(_, opts)
+            require("telescope").setup(opts)
+            require("telescope").load_extension("fzf")
+        end,
     },
     {
         "nvim-telescope/telescope-fzf-native.nvim",

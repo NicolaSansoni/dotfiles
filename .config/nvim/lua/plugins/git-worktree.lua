@@ -4,17 +4,10 @@ return {
         "nvim-telescope/telescope.nvim",
     },
     opts = {},
+    -- stylua: ignore
     keys = {
-        {
-            "<leader>fw",
-            "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
-            { desc = "Find Git Worktree" },
-        },
-        {
-            "<leader>fW",
-            "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktrees()<cr>",
-            { desc = "Create Git Worktree" },
-        },
+        { "<leader>fw", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Find Git Worktree" },
+        { "<leader>fW", function() require("telescope").extensions.git_worktree.create_git_worktrees() end, desc = "Create Git Worktree" },
     },
     config = function(_, opts)
         require("git-worktree").setup(opts)

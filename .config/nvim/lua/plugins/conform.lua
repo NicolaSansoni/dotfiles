@@ -11,10 +11,11 @@ return {
     },
     cmd = { "ConformInfo" },
     event = { "BufWritePre" },
+    -- stylua: ignore
     keys = {
-        { "<leader>cf", "<cmd>lua require('conform').format({ lsp_fallback = true })<CR>", { desc = "Format Code" } },
+        { "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, desc = "Format Code" },
     },
-    --  init = function()
-    --      vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
-    --  end,
+    init = function()
+        -- vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
 }
