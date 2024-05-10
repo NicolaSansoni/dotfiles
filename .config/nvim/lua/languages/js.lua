@@ -1,52 +1,29 @@
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/tailwind.lua
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/yaml.lua
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/json.lua
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/typescript.lua
+
 return {
     {
         "williamboman/mason.nvim",
         opts = {
-            "js-debug-adapter",
+            ensure_installed = {
+                "js-debug-adapter",
+                "prettierd",
+                "prettier",
+            },
         },
     },
-    -- tailwind
-    -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/tailwind.lua
     {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
+
                 tailwindcss = {
                     filetypes_exclude = { "markdown" },
                     filetypes_include = {},
                 },
-            },
-            setup = {
-                tailwindcss = function(_, opts)
-                    local tw = require("lspconfig.server_configurations.tailwindcss")
-                    opts.filetypes = opts.filetypes or {}
-                    vim.list_extend(opts.filetypes, tw.default_config.filetypes)
-                    opts.filetypes = vim.tbl_filter(function(ft)
-                        return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
-                    end, opts.filetypes)
-                    vim.list_extend(opts.filetypes, opts.filetypes_include or {})
-                end,
-            },
-        },
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-        },
-        opts = {},
-    },
-    -- yaml
-    -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/yaml.lua
-    {
-        "b0o/SchemaStore.nvim",
-        lazy = true,
-        version = false, -- last release is way too old
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            servers = {
+
                 yamlls = {
                     capabilities = {
                         textDocument = {
@@ -82,16 +59,7 @@ return {
                         },
                     },
                 },
-            },
-        },
-    },
-    -- json
-    -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/json.lua
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            -- make sure mason installs the server
-            servers = {
+
                 jsonls = {
                     -- lazy-load schemastore when needed
                     on_new_config = function(new_config)
@@ -107,17 +75,7 @@ return {
                         },
                     },
                 },
-            },
-        },
-    },
-    -- typescript
-    -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/typescript.lua
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            -- make sure mason installs the server
-            servers = {
-                ---@type lspconfig.options.tsserver
+
                 tsserver = {
                     keys = {
                         {
@@ -155,9 +113,33 @@ return {
                     },
                 },
             },
+
+            setup = {
+
+                tailwindcss = function(_, opts)
+                    local tw = require("lspconfig.server_configurations.tailwindcss")
+                    opts.filetypes = opts.filetypes or {}
+                    vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+                    opts.filetypes = vim.tbl_filter(function(ft)
+                        return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
+                    end, opts.filetypes)
+                    vim.list_extend(opts.filetypes, opts.filetypes_include or {})
+                end,
+            },
         },
     },
-
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+        },
+        opts = {},
+    },
+    {
+        "b0o/SchemaStore.nvim",
+        lazy = true,
+        version = false, -- last release is way too old
+    },
     {
         "mfussenegger/nvim-dap",
         opts = function()
@@ -197,6 +179,31 @@ return {
                         },
                     }
                 end
+            end
+        end,
+    },
+    {
+        "stevearc/conform.nvim",
+        opts = function(_, opts)
+            for _, lang in pairs({
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+                "css",
+                "scss",
+                "less",
+                "html",
+                "json",
+                "jsonc",
+                "yaml",
+                "markdown",
+                -- "['markdown.mdx']" ,
+                "graphql",
+                -- "handlebars" ,
+            }) do
+                opts.formatters_by_ft[lang] = { { "prettierd", "prettier" } }
             end
         end,
     },
