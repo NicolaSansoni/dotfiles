@@ -21,7 +21,7 @@ export PS1="[${CLR_CYAN}\u@\h \W${CLR_CLR}] \$(__git_ps1 '(%s) ')${CLR_CYAN}\\$ 
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-
+#
 alias sudo="sudo "
 alias git-lc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 alias ls="ls --color=auto "
