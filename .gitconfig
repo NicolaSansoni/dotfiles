@@ -1,12 +1,19 @@
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [user]
-	name = nsanso
-	email = nsansoni97@gmail.com
-
+    name = nsanso
+    email = nsansoni97@gmail.com
 [filter "gitignore"]
-	clean = "sed '/^#gitignore$/{N;d}'; sed '/#gitignore$/d';"
-	smudge = cat
+    clean = "sed '/^#gitignore$/{N;d}'; sed '/#gitignore$/d';"
+    smudge = cat
+[merge]
+    tool = nvimdiff
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 [core]
-	editor = nvim
+    editor = nvim
+    pager = bat -p
