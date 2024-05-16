@@ -36,16 +36,6 @@ return {
             { "<leader>dc", function() require("dap").set_breakpoint(vim.fn.input('Dap: Condition: ')) end, desc = "Dap: Conditional Breakpoint" },
             { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Dap: Breakpoint" },
             { "<leader>dk", function() require("dap").terminate() end, desc = "Dap: Kill" },
-
-            -- { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
-            -- { "<leader>dg", function() require("dap").goto_() end, desc = "Go to Line (No Execute)" },
-            -- { "<leader>dj", function() require("dap").down() end, desc = "Down" },
-            -- { "<leader>dk", function() require("dap").up() end, desc = "Up" },
-            -- { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
-            -- { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
-            -- { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
-            -- { "<leader>ds", function() require("dap").session() end, desc = "Session" },
-            -- { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
         },
 
         config = function()
@@ -57,12 +47,6 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap",
             "nvim-neotest/nvim-nio",
-        },
-        -- TODO: keys
-        -- stylua: ignore
-        keys = {
-            -- { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI", },
-            -- { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = { "n", "v" }, },
         },
         opts = {},
         config = function(_, opts)

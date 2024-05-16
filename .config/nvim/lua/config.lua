@@ -37,7 +37,6 @@ vim.opt.virtualedit = "block"
 -- vim.opt.conceallevel = 0
 -- vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
 -- vim.opt.cursorline = true -- Enable highlighting of the current line
--- vim.opt.expandtab = true -- Use spaces instead of tabs
 -- vim.opt.formatoptions = "jcqlnt"
 -- vim.opt.grepformat = "%f:%l:%c:%m"
 -- vim.opt.inccommand = "nosplit" -- preview incremental substitute
@@ -129,7 +128,7 @@ end, { desc = "Prev Warning" })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "c", "cpp" },
-    callback = function(ev)
+    callback = function()
         vim.bo.commentstring = "//%s"
     end,
 })

@@ -10,6 +10,7 @@ return {
             "saadparwaiz1/cmp_luasnip",
         },
         opts = {
+            auto_brackets = false,
             completion = { completeopt = "menu,menuone,noinsert,noselect" },
             snippet = {
                 expand = function(args)

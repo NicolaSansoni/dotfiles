@@ -6,7 +6,7 @@ return {
     opts = {
         format_on_save = {
             lsp_fallback = true,
-            timeout_ms = 500,
+            timeout_ms = 1000,
         },
     },
     cmd = { "ConformInfo" },
@@ -15,7 +15,4 @@ return {
     keys = {
         { "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, desc = "Format Code" },
     },
-    init = function()
-        -- vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
 }
