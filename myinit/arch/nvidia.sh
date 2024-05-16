@@ -10,6 +10,6 @@ LOGNAME=$(logname)
 cd /home/$LOGNAME
 
 # Update and install tools
-pacman -S --noconfirm nvidia nvidia-lts nvidia-utils nvidia-xconfig
+pacman -S --noconfirm nvidia nvidia-utils nvidia-xconfig
 
 nvidia-xconfig
