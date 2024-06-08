@@ -123,7 +123,6 @@ bindsym $mod+Shift+8 move container to workspace number 8, workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 0, workspace number 0
 
-bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 mode "resize" {
