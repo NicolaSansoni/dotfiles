@@ -13,40 +13,16 @@ return {
         },
         config = function(_, opts)
             vim.api.nvim_create_autocmd("LspAttach", {
+                -- stylua: ignore
                 callback = function(event)
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Lsp Hover" })
-                    vim.keymap.set(
-                        "n",
-                        "gd",
-                        require("telescope.builtin").lsp_definitions,
-                        { desc = "Go to definition" }
-                    )
+                    vim.keymap.set( "n", "gd", require("telescope.builtin").lsp_definitions, { desc = "Go to definition" })
                     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
                     vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "Go to reference" })
-                    vim.keymap.set(
-                        "n",
-                        "gi",
-                        require("telescope.builtin").lsp_implementations,
-                        { desc = "Go to implementation" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>fd",
-                        require("telescope.builtin").lsp_type_definitions,
-                        { desc = "Telescope type definitions" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>fs",
-                        require("telescope.builtin").lsp_document_symbols,
-                        { desc = "Telescope document symbols" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>fws",
-                        require("telescope.builtin").lsp_dynamic_workspace_symbols,
-                        { desc = "Telescope workspace symbols" }
-                    )
+                    vim.keymap.set( "n", "gi", require("telescope.builtin").lsp_implementations, { desc = "Go to implementation" })
+                    vim.keymap.set( "n", "<leader>fd", require("telescope.builtin").lsp_type_definitions, { desc = "Telescope type definitions" })
+                    vim.keymap.set( "n", "<leader>fs", require("telescope.builtin").lsp_document_symbols, { desc = "Telescope document symbols" })
+                    vim.keymap.set( "n", "<leader>fws", require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Telescope workspace symbols" })
                     vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Lsp Rename" })
                     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Lsp Code Action" })
                 end,

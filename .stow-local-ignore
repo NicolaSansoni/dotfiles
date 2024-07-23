@@ -1,0 +1,5 @@
+stow.sh
+.gitignore
+.git
+packages
+initializers

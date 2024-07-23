@@ -81,12 +81,12 @@ vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true })
-vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true })
-vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
-vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next match" })
+vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next match" })
+vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next match" })
+vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Previous match" })
+vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous match" })
+vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous match" })
 
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
@@ -97,14 +97,8 @@ vim.keymap.set("i", ";", ";<c-g>u")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- quickfix list
-vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
-
 -- diagnostic
-vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+vim.keymap.set("n", "L", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "]d", function()
     vim.diagnostic.goto_next()
 end, { desc = "Next Diagnostic" })
@@ -123,6 +117,18 @@ end, { desc = "Next Warning" })
 vim.keymap.set("n", "[w", function()
     vim.diagnostic.goto_prev({ severity = "WARN" })
 end, { desc = "Prev Warning" })
+
+-- quickfix list
+vim.keymap.set("n", "<leader>ll", vim.cmd.lopen, { desc = "Location List" })
+vim.keymap.set("n", "<leader>lq", vim.cmd.copen, { desc = "Quickfix List" })
+vim.keymap.set("n", "<leader>lb", function()
+    vim.diagnostic.setqflist()
+end, { desc = "Buffer Diagnostics" })
+vim.keymap.set("n", "<leader>lp", function()
+    vim.diagnostic.setloclist()
+end, { desc = "Project Diagnostics" })
+vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- AUTOCOMMANDS --
 

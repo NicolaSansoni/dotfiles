@@ -1,0 +1,14 @@
+base
+cups
+dnsmasq
+exfat-utils
+grub
+i3blocks
+inotify-tools
+pavucontrol
+pipewire
+pipewire-pulse
+smartmontools
+ttf-cascadia-code-nerd
+wireplumber
+zram-generator
