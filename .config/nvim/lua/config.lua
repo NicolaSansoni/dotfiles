@@ -119,16 +119,22 @@ vim.keymap.set("n", "[w", function()
 end, { desc = "Prev Warning" })
 
 -- quickfix list
-vim.keymap.set("n", "<leader>ll", vim.cmd.lopen, { desc = "Location List" })
-vim.keymap.set("n", "<leader>lq", vim.cmd.copen, { desc = "Quickfix List" })
-vim.keymap.set("n", "<leader>lb", function()
-    vim.diagnostic.setqflist()
-end, { desc = "Buffer Diagnostics" })
-vim.keymap.set("n", "<leader>lp", function()
-    vim.diagnostic.setloclist()
-end, { desc = "Project Diagnostics" })
+-- vim.keymap.set("n", "<leader>ll", vim.cmd.lopen, { desc = "Location List" })
+-- vim.keymap.set("n", "<leader>lq", vim.cmd.copen, { desc = "Quickfix List" })
 vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+
+vim.keymap.set("n", "<leader>ll", function()
+    local d = vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.WARN } })
+    vim.fn.setloclist(0, vim.diagnostic.toqflist(d))
+    vim.cmd.lopen()
+end, { desc = "Buffer Diagnostics" })
+
+vim.keymap.set("n", "<leader>lx", function()
+    local d = vim.diagnostic.get(nil, { severity = { min = vim.diagnostic.severity.WARN } })
+    vim.fn.setqflist(vim.diagnostic.toqflist(d))
+    vim.cmd.copen()
+end, { desc = "Project Diagnostics" })
 
 -- AUTOCOMMANDS --
 
