@@ -3,6 +3,7 @@ return {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {
+            notify = false,
             presets = {
                 operators = false, -- adds help for operators like d, y, ...
                 motions = false, -- adds help for motions
@@ -11,6 +12,9 @@ return {
                 nav = true, -- misc bindings to work with windows
                 z = true, -- bindings for folds, spelling and others prefixed with z
                 g = true, -- bindings for prefixed with g
+            },
+            icons = {
+                mappings = false,
             },
         },
     },
