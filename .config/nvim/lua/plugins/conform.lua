@@ -4,8 +4,10 @@ return {
         "williamboman/mason.nvim",
     },
     opts = {
+        default_format_opts = {
+            lsp_format = "fallback",
+        },
         format_on_save = {
-            lsp_fallback = true,
             timeout_ms = 1000,
         },
     },
@@ -13,6 +15,6 @@ return {
     event = { "BufWritePre" },
     -- stylua: ignore
     keys = {
-        { "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, desc = "Format Code" },
+        { "<leader>cf", function() require("conform").format() end, desc = "Format Code" },
     },
 }
