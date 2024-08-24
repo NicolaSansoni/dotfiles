@@ -50,6 +50,7 @@ pacman -S --noconfirm	\
 	python	\
 	python-pipx	\
 	base-devel	\
+	openssh	\
 
 # desktop
 pacman -S --noconfirm	\
