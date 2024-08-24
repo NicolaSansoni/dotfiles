@@ -80,12 +80,34 @@ pacman -S --noconfirm	\
 	pipewire-jack	\
 	wireplumber	\
 
-# sudo config
-echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/10-wheel
 
 # user config
 gpasswd -a $USER wheel
 chsh -s $(which zsh) $USER
+
+# sudo config
+echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/10-wheel
+
+# DNS config
+rm /etc/resolv.conf
+ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+# AUR
+useradd -m -s /usr/bin/nologin aurhelper
+echo "aurhelper ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-aurhelper
+
+sudo -u aurhelper git clone https://aur.archlinux.org/yay-bin.git /home/aurhelper/yay
+cd /home/aurhelper/yay
+sudo -u aurhelper makepkg -si --noconfirm
+sudo -u aurhelper yay -Y --gendb
+
+sudo -u aurhelper yay -S --noconfirm \
+	oh-my-zsh-git	\
+	spotify	\
+
+rm /etc/sudoers.d/99-aurhelper
+killall -u aurhelper
+userdel -r aurhelper
 
 # xorg config
 mkdir -p /etc/X11/xorg.conf.d && tee /etc/X11/xorg.conf.d/15-touchpad.conf <<'EOF' 1>/dev/null
