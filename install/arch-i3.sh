@@ -70,6 +70,7 @@ pacman -S --noconfirm	\
 	alacritty	\
 	ttf-cascadia-code-nerd	\
 	ufw	\
+	chromium	\
 
 # audio
 pacman -S --noconfirm	\
@@ -79,7 +80,7 @@ pacman -S --noconfirm	\
 	pipewire-pulse	\
 	pipewire-jack	\
 	wireplumber	\
-
+	pavucontrol	\
 
 # user config
 gpasswd -a $USER wheel
