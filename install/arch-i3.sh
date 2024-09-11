@@ -51,6 +51,7 @@ pacman -S --noconfirm	\
 	python-pipx	\
 	base-devel	\
 	openssh	\
+	xdg-user-dirs	\
 
 # desktop
 pacman -S --noconfirm	\
@@ -85,6 +86,7 @@ pacman -S --noconfirm	\
 # user config
 gpasswd -a $USER wheel
 chsh -s $(which zsh) $USER
+sudo -u $USER xdg-user-dirs-update
 
 # sudo config
 echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/10-wheel
@@ -101,6 +103,7 @@ sudo -u aurhelper git clone https://aur.archlinux.org/yay-bin.git /home/aurhelpe
 cd /home/aurhelper/yay
 sudo -u aurhelper makepkg -si --noconfirm
 sudo -u aurhelper yay -Y --gendb
+cd
 
 sudo -u aurhelper yay -S --noconfirm \
 	oh-my-zsh-git	\
