@@ -50,6 +50,7 @@ pacman -S --noconfirm	\
 	python	\
 	python-pipx	\
 	base-devel	\
+	cmake	\
 	openssh	\
 	xdg-user-dirs	\
 
