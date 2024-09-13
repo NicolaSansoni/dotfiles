@@ -131,7 +131,7 @@ Section "InputClass"
   MatchIsPointer "yes"
   MatchDriver "libinput"
   Option "AccelProfile" "flat"
-  Option "AccelSpeed" "0"
+  Option "AccelSpeed" "1.0"
 EndSection
 EOF
 
