@@ -1,10 +1,9 @@
 #!/bin/bash
 
-xset m 0                                           # mouse accel
 xset b 0                                           # bell
 xset s 0                                           # sleep timer
 xset -dpms                                         # disable display power saving
-setxkbmap 'us,us(intl)' -option 'grp:ctrls_toggle' # keyboard
+setxkbmap us,us(intl)' -option 'grp:ctrls_toggle' # keyboard
 
 # Env variables
 export GTK_THEME=Adwaita:dark
