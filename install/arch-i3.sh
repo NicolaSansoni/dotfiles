@@ -21,7 +21,6 @@ pacman -Syu --noconfirm
 
 # shell utils
 pacman -S --noconfirm	\
-	zsh	\
 	fd	\
 	bat	\
 	neovim	\
@@ -34,7 +33,7 @@ pacman -S --noconfirm	\
 	parallel	\
 
 # sysadmin
-pacman -Rdd --noconfirm	iptables	# necessary as it conflicts with iptables-nft
+pacman -Rdd --noconfirm iptables	# necessary as it conflicts with iptables-nft
 pacman -S --noconfirm	\
 	sudo	\
 	dnsmasq	\
@@ -68,6 +67,7 @@ pacman -S --noconfirm	\
 	xclip	\
 	playerctl	\
 	thunar	\
+	tumbler	\
 	feh	\
 	alacritty	\
 	ttf-cascadia-code-nerd	\
@@ -86,7 +86,7 @@ pacman -S --noconfirm	\
 
 # user config
 gpasswd -a $USER wheel
-chsh -s $(which zsh) $USER
+chsh -s $(which bash) $USER
 sudo -u $USER xdg-user-dirs-update
 
 # sudo config
@@ -107,7 +107,6 @@ sudo -u aurhelper yay -Y --gendb
 cd
 
 sudo -u aurhelper yay -S --noconfirm \
-	oh-my-zsh-git	\
 	spotify	\
 
 rm /etc/sudoers.d/99-aurhelper
