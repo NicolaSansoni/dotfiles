@@ -85,7 +85,7 @@ pacman -S --noconfirm	\
 	pavucontrol	\
 
 # user config
-gpasswd -a $USER wheel
+usermod -aG wheel,libvirt $USER
 chsh -s $(which bash) $USER
 sudo -u $USER xdg-user-dirs-update
 
@@ -108,6 +108,7 @@ cd
 
 sudo -u aurhelper yay -S --noconfirm \
 	spotify	\
+	all-repository-fonts	\
 
 rm /etc/sudoers.d/99-aurhelper
 killall -u aurhelper
