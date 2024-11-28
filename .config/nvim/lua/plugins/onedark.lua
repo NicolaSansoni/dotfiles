@@ -1,8 +1,9 @@
 return {
-  {
-    "navarasu/onedark.nvim",
-    opts = {
-      transparent = true,
-    },
-  },
+	{
+		"navarasu/onedark.nvim",
+		lazy = false,
+		opts = {
+			transparent = true,
+		},
+	},
 }
